@@ -192,7 +192,6 @@ app.post('/updateMyProfile',async function(req, res){
 var GoogleAuth; // Google Auth object.
 function initClient() {
   gapi.client.init({
-      'apiKey': 'AIzaSyCMwIBNMyikHDgbylX6HGVB2cEvODd_ZRY',
       'clientId': '1084522273174-gqg5aiju7ll5o6df6gmgb61uv6f36ljk',
       'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
       'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']
