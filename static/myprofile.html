@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang>
+    <head>
+        <title>My Profile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/vue.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <div class="indicator">
+                <div class="inner_header">
+                    <div class="logo_container">
+                        <h1>SOCIAL<span>WEBAPP</span></h1>
+                    </div>
+                </div>
+                <ul>
+                    <li><a href="./calendar.html">BACK</a></li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        </div>
+        <div class="update-box mt-3" >
+            <h2>My Profile</h2>
+            <form action='http://localhost:3000/updateMyProfile' method='post' onsubmit="return check_form();">
+                <p>First Name</p>
+                <input type="text" name="first_name" value="" id="first_name">
+                <p>Last Name</p>
+                <input type="text" name="last_name" value="" id="last_name">
+                <p>Email Address</p>
+                <input type="text" name="email" value="" id="email" disabled>
+                <p>Password</p>
+                <input type="password" name="password" value="" id="password">
+                <p>Phone Number</p>
+                <input type="text" name="phone" value="" id="phone">
+                <p>Address</p>
+                <input type="text" name="address" value="" id="address">
+                <input class="btn dark-mocha-color" type="submit" value="Update Profile">
+            </form>
+        </div>
+        <script type="text/javascript">
+            function loadProfile(){
+                $.ajax({
+                    type: "POST",
+                    url: 'http://localhost:3000/loadProfile',
+                    data:{},  // data to submit
+                    success: function (data, status, xhr){
+                        $('#first_name').val(data[0].first_name);
+                        $('#last_name').val(data[0].last_name);
+                        $('#email').val(data[0].email);
+                        $('#password').val(data[0].password);
+                        $('#phone').val(data[0].phone);
+                        $('#address').val(data[0].address);
+                    },
+                    error: function (jqXhr, textStatus, errorMessage){
+                        alert(errorMessage);
+                    }
+                });
+            }
+            function check_form(){
+                if($('#first_name').val()==""){
+                    alert("Please Enter First Name.");
+                    return false;
+                }
+                if($('#last_name').val()==""){
+                    alert("Please Enter Last Name.");
+                    return false;
+                }
+                if($('#password').val()==""){
+                    alert("Please Enter Password.");
+                    return false;
+                }
+                if($('#phone').val()==""){
+                    alert("Please Enter Phone Number.");
+                    return false;
+                }
+                if($('#address').val()==""){
+                    alert("Please Enter Address.");
+                    return false;
+                }
+                return true;
+            }
+            loadProfile();
+        </script>
+    </body>
+</html>

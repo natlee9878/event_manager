@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body id="background">
+	<div id="app">
+        <div class="header">
+            <div class="indicator">
+                <div class="inner_header">
+                    <div class="logo_container">
+                        <h1>SOCIAL<span>WEBAPP</span></h1>
+                    </div>
+                </div>
+                <ul>
+                    <li><a href="./index.html">BACK</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="box">
+            <h2>Sign Up</h2>
+            <form method="post" action="http://localhost:3000/signup" onsubmit="return signup_form();">
+                <p>First Name: </p>
+                <input type="text" name="firstName" id="first_name" placeholder="Enter Your First Name: " >
+                <p>Last Name: </p>
+                <input type="text" name="lastName" id="last_name" placeholder="Enter Your Last Name: " >
+                <p>Email Address: </p>
+                <input type="text" name="email" id="email" placeholder="Enter Your Email: " >
+                <p>Password: </p>
+                <input type="password" name="password" id="password" placeholder="Enter Password: " >
+                <p>Phone Number: </p>
+                <input type="text" name="phone" id= "phone" placeholder="Enter Phone number: " >
+                <p>Address: </p>
+                <input type="text" name="address" id= "address"  placeholder="Enter Your Address: " >
+                <button type="submit" class="btn dark-mocha-color">Continue</button>
+            </form>
+        </div>
+	</div>
+    <script type="text/javascript">
+            function signup_form(){
+                if($('#first_name').val()==""){
+                    alert("Please Enter First Name.");
+                    return false;
+                }
+                if($('#last_name').val()==""){
+                    alert("Please Enter Last Name.");
+                    return false;
+                }
+                if($('#password').val()==""){
+                    alert("Please Enter Password.");
+                    return false;
+                }
+                if($('#phone').val()==""){
+                    alert("Please Enter Phone Number.");
+                    return false;
+                }
+                if($('#address').val()==""){
+                    alert("Please Enter Address.");
+                    return false;
+                }
+                return true;
+            }
+    </script>
+</body>
+</html>

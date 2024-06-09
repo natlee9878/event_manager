@@ -1,0 +1,60 @@
+<!@<!DOCTYPE html>
+<html lang>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>Login</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="index.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="1084522273174-gqg5aiju7ll5o6df6gmgb61uv6f36ljk.apps.googleusercontent.com">
+        <meta name="google-signin-plugin_name" content="APP">
+    </head>
+    <body id="background">
+      <div id="app">
+        <div class="header">
+            <div class="inner_header">
+                <div class="logo_container">
+                    <h1>SOCIAL<span>WEBAPP</span></h1>
+                </div>
+            </div>
+          </div>
+        <div class="box">
+            <h2>Log In</h2>
+            <form method="post" action="http://localhost:3000/login">
+                <p>Email Address</p>
+                <input type="text" name="email" placeholder="Enter Your Email: " >
+                <p>Password</p>
+                <input type="password" name="password" placeholder="Enter Password: " >
+                <button type="submit" class="btn dark-mocha-color">Log In</button>
+                <p class="signup-text">Don't have an account? <a href="./signup.html">Sign Up Here!</a></p>
+                <div id="my-signin2"></div>
+                <script>
+                  function onSuccess(googleUser) {
+                      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+                  }
+                  function onFailure(error) {
+                    console.log(error);
+                  }
+                  function renderButton() {
+                    gapi.signin2.render('my-signin2', {
+                      'scope': 'profile email',
+                      'width': 240,
+                      'height': 50,
+                      'longtitle': true,
+                      'theme': 'dark',
+                      'onsuccess': onSuccess,
+                      'onfailure': onFailure
+                    });
+                  }
+                </script>
+                <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+            </form>
+        </div>
+      </div>
+    </body>
+</html>
